@@ -4,10 +4,10 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InfoController;
 
-// cоздаём маршрут  который обрабатывает GET-запрос на URL /info/server
+// cоздаём маршрут  который обрабатывает get-запрос на URL /info/server
 Route::get('/info/server', [InfoController::class, 'serverInfo']);  // будет вызван метод serverInfo из контроллера InfoController
 
-// маршрут для получения данных о клиенте (IP и User Agent)
+// маршрут для получения данных о клиенте (IP и юзер агент)
 Route::get('/info/client', [InfoController::class, 'clientInfo']);
 
 // маршрут для получения данных о базе данных (тип подключения и название базы)
