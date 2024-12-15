@@ -1,0 +1,858 @@
+{
+	"info": {
+		"_postman_id": "2cbf908f-3164-4a7a-8e50-3bc0b61d7d4c",
+		"name": "lb3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40297696"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"Shohzod\",\r\n  \"email\": \"a@mail.ru\",\r\n  \"password\": \"Password123!\",\r\n  \"c_password\": \"Password123!\",\r\n  \"birthday\": \"2000-01-01\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8000/api/auth/register",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"AdminAdmin\",\r\n    \"password\": \"Password123!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8000/api/auth/login",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tokens",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer CTktFr3yoU1wH-DfHiQXN07b9jBhwlMeOlyjhYbm6_GmviQq7TB3rQ",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "127.0.0.1:8000/api/auth/tokens",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"tokens"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "me",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/api/auth/me",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer ZVMqI3IgaiILG8OT2TYEYOyIPyD_v3rSyOmSyAGEgIF0fjsk22cSUg",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"refresh_token\": \"yXFxrEslGBci4JmZi0XN4zY_GUAjqaB8kk_wSJOwRKS6ZpfHnvgbyA\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8000/api/auth/refresh",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change pass",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8000/api/auth/change_password",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"change_password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "out",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/api/auth/out",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"out"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update profile",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "127.0.0.1:8000/api/auth/profile",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "permissions",
+			"item": [
+				{
+					"name": "Show permissions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/api/policy/permission",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"policy",
+								"permission"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение конкретного разрешения",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/api/policy/permission/{id}",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"policy",
+								"permission",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create permission",
+					"request": {
+						"method": "POST",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Update permission",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/api/policy/permission/{id}",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"policy",
+								"permission",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete hard",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/api/policy/permission/{id}",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"policy",
+								"permission",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete soft",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/api/policy/permission/{id}",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"policy",
+								"permission",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Restore soft delete",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/api/policy/permission/{id}/restore",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"policy",
+								"permission",
+								"{id}",
+								"restore"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "roles",
+			"item": [
+				{
+					"name": "Show roles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/api/policy/role",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"policy",
+								"role"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create role",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/api/policy/role",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"policy",
+								"role"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получить конкретной роли",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/api/role/{id}",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"role",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update role",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Delete hard",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/api/policy/role/",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"policy",
+								"role",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete soft role",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/api/policy/role/{id}/soft",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"policy",
+								"role",
+								"{id}",
+								"soft"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Restore soft delete",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "Show users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/api/policy/users",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"policy",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Конкретный юзер",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/api/policy/user/{id}",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"policy",
+								"user",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Создание связи юзера и роли",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/api/policy/user/{user_id}/role/{role_id}",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"policy",
+								"user",
+								"{user_id}",
+								"role",
+								"{role_id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete hard связи юзера и роли",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/api/policy/userRole/{id}",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"policy",
+								"userRole",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Мягкое удаление связи юзера и роли",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/api/policy/userRole/{id}/soft",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"policy",
+								"userRole",
+								"{id}",
+								"soft"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Restore мягко удаленной связи",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/api/policy/userRole/{id}/restore",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"policy",
+								"userRole",
+								"{id}",
+								"restore"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "rolePermission",
+			"item": [
+				{
+					"name": "Получить конкр связь роли с разрешением",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/api/policy/rolePermission/{role_id}",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"policy",
+								"rolePermission",
+								"{role_id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create связи роли с разрешениями",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/api/policy/role/{role_id}/permission/{permission_id}",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"policy",
+								"role",
+								"{role_id}",
+								"permission",
+								"{permission_id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete hard  role and permission",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/api/policy/rolePermission/{id}",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"policy",
+								"rolePermission",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete soft",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/api/policy/rolePermission/{id}/soft",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"policy",
+								"rolePermission",
+								"{id}",
+								"soft"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Restore soft delete",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/api/policy/rolePermission/{id}/restore",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"policy",
+								"rolePermission",
+								"{id}",
+								"restore"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
