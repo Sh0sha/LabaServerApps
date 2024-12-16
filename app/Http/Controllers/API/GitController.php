@@ -12,56 +12,57 @@ class GitController extends Controller
     public function handleGitWebhook(Request $request)
     {
         $gitBinary = '"C:/Program Files/Git/bin/git.exe"';
-        $repositoryPath = 'C:/OSPanel/home/application';
+        $repositoryPath = 'C:/repos';
 
         $secretKey = env('GIT_SECRET_KEY'); // Получаем ключ из .env
         $inputSecretKey = $request->input('secret_key'); // Получаем ключ из запроса
 
         // Проверка наличия ключа в .env
         if (empty($secretKey)) {
-            return response()->json(['message' => 'Server secret key is not configured.'], 500);
+            return response()->json(['message' => 'Server secret key is not configured'], 500);
         }
 
         // Проверка наличия ключа в запросе
         if (empty($inputSecretKey)) {
-            return response()->json(['message' => 'Request secret key is missing.'], 400);
+            return response()->json(['message' => 'Request secret key is poteryan'], 400);
         }
 
         // Сравнение ключей
         if ($inputSecretKey !== $secretKey) {
-            return response()->json(['message' => 'Invalid secret key.'], 403);
+            return response()->json(['message' => 'Invalid secret key'], 403);
         }
 
         $lock = Cache::lock('git-update-lock', 30);
 
         if (!$lock->get()) {
-            return response()->json(['message' => 'Another update process is currently running. Please try again later.'], 429);
+            return response()->json(['message' => 'Please try again later'], 429);
         }
 
         try {
             // Логирование даты и IP-адреса
             $ipAddress = $request->ip();
             $currentDate = now()->toDateTimeString();
-            Log::info("Git hook triggered", [
+            Log::info("Git hook work", [
                 'date' => $currentDate,
                 'ip_address' => $ipAddress,
             ]);
 
             // Выполнение Git-операций
             $projectPath = base_path(); // Путь к проекту
-            $resetChanges = $this->executeCommand("reset --hard", $projectPath);
+            $resetChanges = $this->executeCommand("reset --hard", $projectPath); //выполняет жесткое сбрасывание изменений в Git.
             $branchSwitch = $this->executeCommand("checkout master", $projectPath);
             $pullChanges = $this->executeCommand("pull origin master", $projectPath);
+//выполнение команды pull для получения последних изменений из удаленного репозитория
 
             // Логирование выполнения
-            Log::info("Git operations completed", [
+            Log::info("Git operation complete", [
                 'branch_switch' => $branchSwitch,
                 'reset_changes' => $resetChanges,
                 'pull_changes' => $pullChanges,
             ]);
 
             return response()->json([
-                'message' => 'Project successfully updated from Git.',
+                'message' => 'Project success Update on GIT.',
                 'logs' => [
                     'branch_switch' => $branchSwitch,
                     'reset_changes' => $resetChanges,
@@ -70,11 +71,11 @@ class GitController extends Controller
             ], 200);
         } catch (\Exception $e) {
             Log::error("Error during Git operations", ['error' => $e->getMessage()]);
-            return response()->json(['message' => 'An error occurred during the update process.'], 500);
+            return response()->json(['message' => ' error'], 500);
         } finally {
             // Освобождение блокировки
             $lock->release();
-        }
+        }// блоке освобождается кэшированная блокировка, чтобы другие запросы могли запускать обновление после завершения текущего
     }
 
 
@@ -84,7 +85,7 @@ class GitController extends Controller
         $gitPath = '"C:\\Program Files\\Git\\cmd\\git.exe"'; // Путь к git.exe
 
         // Формируем полную команду
-        $fullCommand = $gitPath . ' ' . $command;
+        $fullCommand = $gitPath . ' ' . $command;  //  Объединяет путь к Git с командой
 
         // Переключаемся в рабочую директорию и выполняем команду
         chdir($workingDirectory);
