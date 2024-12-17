@@ -9,10 +9,16 @@ use Illuminate\Support\Facades\Cache;
 
 class GitController extends Controller
 {
-    public function handleGitWebhook(Request $request)
+    //
+    // Проверить секретный ключ, переданный в запросе
+    // Убедиться, что одновременно выполняется только один процесс обновления
+    // Выполнить команды Git (reset, checkout, pull) для обновления проекта
+    //Логировать важные данные (дата, IP-адрес, результаты команд)
+    // 
+    public function handleGitWebhook(Request $request)  
     {
         $gitBinary = '"C:/Program Files/Git/bin/git.exe"';
-        $repositoryPath = 'C:/repos';
+        $repositoryPath = 'C:\Users\Professional\lb6';
 
         $secretKey = env('GIT_SECRET_KEY'); // Получаем ключ из .env
         $inputSecretKey = $request->input('secret_key'); // Получаем ключ из запроса
@@ -32,7 +38,7 @@ class GitController extends Controller
             return response()->json(['message' => 'Invalid secret key'], 403);
         }
 
-        $lock = Cache::lock('git-update-lock', 30);
+        $lock = Cache::lock('git-update-lock', 30); // cache lock - исключения одновременного выполнения двух обновлений
 
         if (!$lock->get()) {
             return response()->json(['message' => 'Please try again later'], 429);
@@ -49,9 +55,9 @@ class GitController extends Controller
 
             // Выполнение Git-операций
             $projectPath = base_path(); // Путь к проекту
-            $resetChanges = $this->executeCommand("reset --hard", $projectPath); //выполняет жесткое сбрасывание изменений в Git.
+            $resetChanges = $this->executeCommand("reset --hard", $projectPath); //выполняет жесткое сбрасывание локальных изменений в Git
             $branchSwitch = $this->executeCommand("checkout master", $projectPath);
-            $pullChanges = $this->executeCommand("pull origin master", $projectPath);
+            $pullChanges = $this->executeCommand("pull origin master", $projectPath); 
 //выполнение команды pull для получения последних изменений из удаленного репозитория
 
             // Логирование выполнения
